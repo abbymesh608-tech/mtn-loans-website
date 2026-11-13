@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTN Loans</title>
+    <title>MTN Loans - Application</title>
+
     <style>
         * {
             box-sizing: border-box;
@@ -18,18 +19,13 @@
 
         header {
             background: #ffcc00;
-            padding: 22px;
+            padding: 25px;
             text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            color: #222;
         }
 
         .container {
             max-width: 450px;
-            margin: 35px auto;
+            margin: 30px auto;
             padding: 25px;
             background: white;
             border-radius: 12px;
@@ -38,11 +34,6 @@
 
         h2 {
             text-align: center;
-        }
-
-        p {
-            text-align: center;
-            line-height: 1.6;
         }
 
         label {
@@ -59,10 +50,32 @@
             border-radius: 6px;
         }
 
+        .privacy {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff8dc;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 15px;
+            font-weight: normal;
+        }
+
+        .consent input {
+            width: auto;
+            margin-top: 4px;
+        }
+
         button {
             width: 100%;
             padding: 14px;
-            margin-top: 22px;
+            margin-top: 20px;
             background: #ffcc00;
             border: none;
             border-radius: 6px;
@@ -71,47 +84,63 @@
             cursor: pointer;
         }
 
-        button:hover {
-            background: #e6b800;
-        }
-
         footer {
             text-align: center;
             padding: 20px;
-            color: #777;
         }
     </style>
 </head>
+
 <body>
 
 <header>
     <h1>MTN LOANS</h1>
-    <p>Welcome to MTN Loans</p>
+    <p>Loan Application Portal</p>
 </header>
 
 <div class="container">
-    <h2>Loan Application</h2>
 
-    <p>Apply for a loan by entering your details below.</p>
+    <h2>Apply for a Loan</h2>
 
     <form action="/apply" method="POST">
 
         <label>Full Name</label>
-        <input type="text" name="name" required>
+        <input type="text" name="name" autocomplete="name" required>
 
         <label>Phone Number</label>
-        <input type="tel" name="phone" required>
+        <input type="tel" name="phone" autocomplete="tel" required>
 
         <label>Loan Amount</label>
-        <input type="number" name="amount" required>
+        <input type="number" name="amount" min="1" required>
+
+        <div class="privacy">
+            <strong>Privacy Notice</strong>
+            <p>
+                Your name, phone number and requested loan amount
+                will be shared with the authorized application
+                processing team through Telegram for the purpose
+                of handling your application.
+            </p>
+            <p>
+                Do not enter passwords, PINs, OTPs or bank
+                login details.
+            </p>
+        </div>
+
+        <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required>
+            I understand and agree to the collection and sharing
+            of the details above for application processing.
+        </label>
 
         <button type="submit">Submit Application</button>
 
     </form>
+
 </div>
 
 <footer>
-    <p>© 2026 MTN Loans</p>
+    © 2026 MTN Loans
 </footer>
 
 </body>
