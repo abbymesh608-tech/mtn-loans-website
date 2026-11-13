@@ -63,6 +63,8 @@ app.post("/api/inquiry", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.post("/apply", (req, res) => {
+    res.send("Application received successfully!");
+});app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
