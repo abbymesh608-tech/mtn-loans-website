@@ -1,0 +1,13 @@
+{
+  "name": "loan-inquiry-website",
+  "version": "1.0.0",
+  "description": "Loan inquiry website with Telegram notifications",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "dotenv": "^16.4.7"
+  }
+}
