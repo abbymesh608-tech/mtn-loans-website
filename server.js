@@ -64,7 +64,43 @@ app.post("/api/inquiry", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.post("/apply", (req, res) => {
-    res.send("Application received successfully!");
+    res.send(app.post("/apply", async (req, res) => {
+    try {
+        const token = process.env.BOT_TOKEN;
+        const chatId = process.env.CHAT_ID;
+
+        if (!token || !chatId) {
+            return res.status(500).send("Telegram is not configured.");
+        }
+
+        const message = "New website application received.";
+
+        const response = await fetch(
+            `https://api.telegram.org/bot${token}/sendMessage`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        if (!result.ok) {
+            throw new Error("Telegram notification failed.");
+        }
+
+        res.send("Application received successfully!");
+
+    } catch (error) {
+        console.error("Telegram error:", error.message);
+        res.status(500).send("Application notification failed.");
+    }
 });app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
